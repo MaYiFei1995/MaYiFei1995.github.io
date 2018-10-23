@@ -1,14 +1,33 @@
-# Site settings
-title: Aiming Blog
-SEOTitle: Aiming的博客 | Aiming Blog
 email: maxiaochou1030@gmail.com
 description: "短腿的前足球🐶"
 url: "https://MaYiFei1995.github.io"
-theme: jekyll-theme-architect
-
-# Publish posts or collection documents with a future date.
-future: true
 
 # SNS settings
 RSS: false
 weibo_username:     38分
+
+permalink: /:year:month:day/:title
+url: #Your url here
+baseurl: /project
+
+# variables
+name: Aiming Blog
+description: Aiming的博客 | Aiming Blog
+google_verification: null
+
+
+# File management
+include: [".htaccess"]
+exclude: ["README.md", "LICENSE"]
+
+# Sass
+sass:
+  style: :compressed
+  sass_dir: _sass
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    disable : true
