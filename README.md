@@ -1,11 +1,16 @@
-# Windows 95 Theme for Jekyll
+Jekyll-Pug-Material
+---
 
-![ss](https://github.com/h01000110/windows-95/raw/gh-pages/screenshot_2.png)
+![Screenshot of template](src/static/img/screenshot.png)
 
-Homepage: [Windows 95](https://h01000110.github.io/20170917/windows-95)
+# A Material Design Pug Experience Using [Jekyll-Pug](https://jekyll-pug.dougie.io/)
 
-Demo: [Click here](https://h01000110.github.io/windows-95/)
+## To Run:
 
-Author: [h01000110 (hi)](https://github.com/h01000110)
+1. Clone/download this repository.
+2. `cd` into the cloned/downloaded repository and run the command `bundle`.
+3. Run the command `jekyll serve`.
 
-License: [MIT](https://github.com/h01000110/windows-95/blob/master/LICENSE)
+## Package.json?
+
+The package.json is for deploying to Netlify. It tells Netlify to install the Pug-CLI NPM package which is needed in order to run Jekyll-Pug.
