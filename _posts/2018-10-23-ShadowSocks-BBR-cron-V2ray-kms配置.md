@@ -10,14 +10,14 @@ tags: VPS
  **!!!所有命令都需要root权限!!!**
  **!!!所有命令都需要root权限!!!**
  
- # 1.SS
- # 1.1 一键脚本
- [From- Shadowsocks 一键安装脚本（四合一）  |  秋水逸冰](https://teddysun.com/486.html)
- ```
- wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master /shadowsocks-all.sh
- chmod +x shadowsocks-all.sh
- ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
- ```
+# 1.SS
+# 1.1 一键脚本
+[From- Shadowsocks 一键安装脚本（四合一）  |  秋水逸冰](https://teddysun.com/486.html)
+```
+wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master /shadowsocks-all.sh
+chmod +x shadowsocks-all.sh
+./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+```
 # 1.2配置
 # 1.2.1配置目录
 ```
