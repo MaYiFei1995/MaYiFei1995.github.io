@@ -1,17 +1,34 @@
-title: Aiming Blog
-timezone: UTC
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
 source: src
-destination: dist
-permalink: "/:categories/:title"
 
 description: "短腿的前足球🐶"
 url: "https://MaYiFei1995.github.io"
 
 description: Aiming的博客 | Aiming Blog
+
+
+# Jekyll configuration
+
+name: Aiming Blog
+description: Welcome to Aiming Blog
+
+# baseurl will often be '', but for a project page on gh-pages, it needs to
+# be the project name.
+# *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
+#     run it like so: jekyll serve --baseurl=''
+baseurl: ''
+## default date_format
+date_format: 
+  title: "%B-%-d-%Y"
+  archive: "%b"
+  categories: "%b-%Y"
+  tag: "%b-%Y"
+# Language
+lan: "cn" 
+
+paginate: 10
+
+highlighter: rouge
+markdown: kramdown
+gems: ['jekyll-paginate']
+
+exclude: ['README.md', 'LICENSE', "*.bak"]
