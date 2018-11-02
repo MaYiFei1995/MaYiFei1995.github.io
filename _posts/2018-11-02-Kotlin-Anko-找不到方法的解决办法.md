@@ -16,5 +16,5 @@ tags: Kotlin Anko
 
 ![插件安装之后][after]
 
-[before]:/img/2018-11-02-anko-before.png
-[after]:/img/2018-11-02-anko-after.png
+[before]:https://mayifei1995.github.io/img/2018-11-02-anko-before.png
+[after]:https://mayifei1995.github.io/img/2018-11-02-anko-after.png
