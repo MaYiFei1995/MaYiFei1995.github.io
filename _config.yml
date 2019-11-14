@@ -32,3 +32,4 @@ markdown: kramdown
 gems: ['jekyll-paginate']
 
 exclude: ['README.md', 'LICENSE', "*.bak"]
+theme: jekyll-theme-cayman
