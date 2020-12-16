@@ -6,20 +6,21 @@
 ## 0x01 解包分析
 首先把apk拿出来解包，开始看代码。
 
-![混淆过的classes](https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-1.png)
+![混淆过的classes][p1]
 
 代码没有加固，用了混淆，搜索关键字之后发现，只做了一个签名校验，pro版本通过一个常量来判断并通过SP明文存储。
 root过的话直接通过adb修改SP的内容就好，由于手机没有root，只好通过改代码的方式来实现破解。
 
-![pro版判定](https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-2.png)
+![pro版判定][p2]
 
-![签名校验](https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-3.png)
+![签名校验][p3]
 
 ---
 
 ## 0x02  修改Pro版
 通过搜索代码确定，pro版的判定只通过MenuItem::isPro，直接把值写死，setter方法return就好。
 - 修改MenuItem.smali的constructor，在return-void前为isPro初始化
+
 ```diff
 # direct methods
 .method public constructor <init>()V
@@ -60,7 +61,9 @@ root过的话直接通过adb修改SP的内容就好，由于手机没有root，�
     return-void
 .end method
 ```
+
 - 修改MenuItem.smali的setPro方法，直接删除iput-boolean
+
 ```diff
 .method public final setPro(Z)V
     .locals 0
@@ -75,6 +78,7 @@ root过的话直接通过adb修改SP的内容就好，由于手机没有root，�
 
 ## 0x03 绕过签名校验
 通过搜索代码确定，签名校验的接口为`b.g.b.b.b.g.b()`，直接修改方法的返回值
+
 ```diff
 .method public static b(Landroid/content/pm/PackageInfo;Z)Z
     .locals 3
@@ -136,3 +140,7 @@ root过的话直接通过adb修改SP的内容就好，由于手机没有root，�
 
 ## 0x05 总结
 这个App没有做过多的防护，重打包的过程也只是因为工具版本太低出现了一点小问题，修改起来没有什么难度，分析签名校验和Pro鉴权也算顺利，没遇到什么坑。
+
+[p1]:https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-1.png
+[p2]:https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-2.png
+[p3]:https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-3.png
