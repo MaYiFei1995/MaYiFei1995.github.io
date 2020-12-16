@@ -1,15 +1,15 @@
 source: src
 
-description: "短腿的前足球🐶"
+description: "断短腿的前足球🐶"
 url: "https://MaYiFei1995.github.io"
 
-description: Aiming的博客 | Aiming Blog
+description: MaYiFei1995的博客 | MaYiFei1995 Blog
 
 
 # Jekyll configuration
 
-name: Aiming Blog
-description: Welcome to Aiming Blog
+name: MaYiFei1995 Blog
+description: Welcome to MaYiFei1995 Blog
 
 # baseurl will often be '', but for a project page on gh-pages, it needs to
 # be the project name.
