@@ -141,6 +141,6 @@ root过的话直接通过adb修改SP的内容就好，由于手机没有root，�
 ## 0x05 总结
 这个App没有做过多的防护，重打包的过程也只是因为工具版本太低出现了一点小问题，修改起来没有什么难度，分析签名校验和Pro鉴权也算顺利，没遇到什么坑。
 
-[p1]:https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-1.png
-[p2]:https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-2.png
-[p3]:https://github.com/MaYiFei1995/MaYiFei1995.github.io/blob/master/img/2020-12-16-3.png
+[p1]:https://MaYiFei1995.github.io/img/2020-12-16-1.png
+[p2]:https://MaYiFei1995.github.io/img/2020-12-16-2.png
+[p3]:https://MaYiFei1995.github.io/img/2020-12-16-3.png
