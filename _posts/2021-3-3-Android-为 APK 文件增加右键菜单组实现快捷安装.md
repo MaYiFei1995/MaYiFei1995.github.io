@@ -1,6 +1,10 @@
+# 为 APK 文件增加右键菜单组实现快捷安装与快捷反编译
+
+***
+
 ## 0.结果
 ![效果图](https://MaYiFei1995.github.io/img/2021-03-03-1.png)
-
+![效果图](https://MaYiFei1995.github.io/img/2021-03-03-2.png)
 ---
 
 ## 1.需求
@@ -9,9 +13,16 @@
 - adb install -r
 - adb install -t
 - 使用 jarsigner 重签名
-- 导出 Manifest，替代复制到 AS 中使用 ApkAnalyzer 查看
 
 可是对 windows 一窍不通，只能去网上抄代码。
+
+**更新**
+把 apk 复制到 as 中再通过 `ApkAnalyzer` 查看 `AndroidManifest`太麻烦，加上不想每次敲`java -jar apktool.jar d a.apk --only-main-classes`这么一大串，就增加了三个新功能
+- 导出 apk 的 `AndroidManifest.xml`
+- apk 右键`apktool d`
+- 目录右键`apktool b`
+
+接下来要做的就是反编译各类型文件格式转换了，`dx.jar`、`d2j`、`baksmali.jar`、`smali.jar`这些工具的快捷命令
 
 ---
 
@@ -26,7 +37,7 @@
 
 参照[apkanalyzer command](https://developer.android.com/studio/command-line/apkanalyzer.html)文档，尝试使用命令行调用` apkanalyzer manifest print xxx.apk`，但``ApkAnalyzer`是 unix 的 shell，没办法在 windows 环境下直接调用。
 
-在[StackOverflow](https://stackoverflow.com/questions/47081004/apkanalyzer-is-not-recognized-as-an-internal-or-external-command/51905063#51905063)搜索后，找到了解决办法，按照文中配置了 cmd 后，将目录添加到了 Path 中，就可以配置注册表了。
+在[StackOverflow](https://stackoverflow.com/questions/47081004/apkanalyzer-is-not-recognized-as-an-internal-or-external-command/51905063#51905063)搜了下，找到了解决办法，按照文中配置了 cmd 后，将目录添加到了 Path 中，就可以配置注册表了。
 
 ---
 
@@ -123,11 +134,50 @@ Windows Registry Editor Version 5.00
 @="PowerShell -noexit apkanalyzer manifest print \"%1\" >  \"%1.AndroidManifest.xml\"  "
 
 ```
+```
+Windows Registry Editor Version 5.00
 
+; apktool.reg
+
+[HKEY_CLASSES_ROOT\*\shell\APKTool]
+
+"MUIVerb"="APKTool"
+
+"SubCommands"=""
+
+"Position"="Center"
+
+[HKEY_CLASSES_ROOT\*\shell\APKTool\shell]
+
+[HKEY_CLASSES_ROOT\*\shell\APKTool\shell\apktoold]
+
+@="apktool d"
+
+[HKEY_CLASSES_ROOT\*\shell\APKTool\shell\apktoold\command]
+
+@="PowerShell -noexit java -jar .\\apktool_2.5.0.jar d \"%1\" --only-main-classes"
+
+[HKEY_CLASSES_ROOT\Folder\shell\APKTool]
+
+"MUIVerb"="APKTool"
+
+"SubCommands"=""
+
+"Position"="Center"
+
+[HKEY_CLASSES_ROOT\Folder\shell\APKTool\shell]
+
+[HKEY_CLASSES_ROOT\Folder\shell\APKTool\shell\apktoolb]
+
+@="apktool b"
+
+[HKEY_CLASSES_ROOT\Folder\shell\APKTool\shell\apktoolb\command]
+
+@="PowerShell -noexit java -jar .\\apktool_2.5.0.jar b \"%1\" -o new.apk"
+```
 ---
 
 # 4.Todo
 - 1.只为 apk 文件注册右键菜单组
 - 2.配置命令执行 python 脚本对重签名的文件名进行优化
-- 3.为 apk 文件增加常用的 apktool 命令
-- 4.为 dex 文件增加常用的 d2j 命令
+- 3.为 dex 文件增加常用的 d2j 命令
